@@ -42,6 +42,9 @@ app.get('/App.js', (req, res) => {
 app.get('/List.js', (req, res) => {
     res.sendFile(__dirname + '/src/components/List.js');
 });
+app.get('/style.css', (req, res) => {
+    res.sendFile(__dirname + '/src/style.css');
+});
 
 app.get('/src/css/:filename', function(req, res){
     console.log(req.params.filename)

@@ -7,10 +7,19 @@ const List = {
         <div class='list-container'>
             <h1>List</h1>
             <table class='list-table'>
-                <tr> <th class='list-column' v-for='slotDef in serverData.slotDefs'> {{slotDef.labels.label}} </th> </tr>
-                <tr v-for='record in serverData.records'>
-                    <td v-for='keys in record'> {{keys}} </td>
-                </tr>
+            
+                <thead>
+                    <tr> 
+                        <th class='list-column' v-for='slotDef in serverData.slotDefs'> {{slotDef.labels.label}} </th>
+                    </tr>
+                </thead> 
+
+                <tbody>
+                    <tr v-for='record in serverData.records'>
+                        <td v-for='keys in record'> {{keys}} </td>
+                    </tr>
+                </tbody>
+
             </table>
         </div>
     `,
