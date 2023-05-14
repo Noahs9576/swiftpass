@@ -4,35 +4,37 @@ import List from './List.js';
 const App = {
     name: 'App',
     props: [],
+
     template: `
-    <div>
-        <list :serverData='fetchServerData()'></list>
-    </div>
+        <div class='app-container'>
+            <list :serverData='serverData' />
+        </div>
     `,
-    data: () => ({
 
-    }),
+    data() {
+        return {
+            serverData: {}
+        }
+    },
+
+    created() {            
+        fetch('/list/getData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({bucket: 'bucket'}),
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            this.serverData = data;
+        });
+    },
+
     methods: {
-        fetchServerData() {
-            serverData = {};
-            
-            fetch('/list/getData', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({bucket: 'bucket'}),
-            })
-            .then(function(response) {
-                var res = response.json()
-                return res;
-            })
-            .then(function(data) {
-                serverData = data;
-            });
 
-            return serverData;
-        },
     },
 };
 

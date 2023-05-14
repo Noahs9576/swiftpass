@@ -7,7 +7,22 @@ const port = 8080; // default port to listen
 var bucketDef = {
     bucket: {
         name: 'bucket',
-        slots: [{name: 'name'}, {name: 'slots'} ],
+        slots: [
+            {
+                name: 'name',
+                labels: {
+                    label: 'Name',
+                    labelp: 'Names'
+                }
+            }, 
+            {
+                name: 'slots',
+                labels: {
+                    label: 'Slot',
+                    labelp: 'Slots'
+                }
+            } 
+        ],
     },
 };
 
@@ -27,12 +42,13 @@ app.get('/App.js', (req, res) => {
 app.get('/List.js', (req, res) => {
     res.sendFile(__dirname + '/src/components/List.js');
 });
+app.get('/style.css', (req, res) => {
+    res.sendFile(__dirname + '/src/style.css');
+});
 
 app.post('/list/getData', (req, res) => {
-    console.log(req.body.bucket);
     var bucketId = req.body.bucket;
-    console.log({records: bucketData[bucketId], slotDef: bucketDef[bucketId].slots});
-    res.send({records: bucketData[bucketId], slotDef: bucketDef[bucketId].slots});
+    res.send({records: bucketData[bucketId], slotDefs: bucketDef[bucketId].slots});
 });
 
 app.listen(port, () => {
