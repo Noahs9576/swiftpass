@@ -7,13 +7,14 @@ const App = {
 
     template: `
         <div class='app-container'>
-            <list :serverData='serverData' />
+            <list v-if='!isLoading' :serverData='serverData' />
         </div>
     `,
 
     data() {
         return {
-            serverData: {}
+            serverData: {},
+            isLoading: true
         }
     },
 
@@ -30,6 +31,7 @@ const App = {
         })
         .then((data) => {
             this.serverData = data;
+            this.isLoading = false;
         });
     },
 
