@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import ListHeader from './ListHeader.js';
 
 const List = {
     name: 'List',
@@ -6,9 +7,9 @@ const List = {
 
     template: `
         <div class='list-container'>
-            <h1> {{ serverData.bucketLabel }} </h1>
-            <table class='list-table'>
-            
+            <list-header :title='serverData.bucketLabel' :bucket='serverData.bucket' />
+
+            <table class='list-table'>           
                 <thead>
                     <tr> 
                         <th class='list-column' v-for='slotDef in slotDefs'> {{slotDef.labels.label}} </th>
@@ -20,7 +21,6 @@ const List = {
                         <td v-for='keys in record'> {{keys}} </td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
     `,

@@ -11,10 +11,7 @@ html, body, .app-container {
     background-color: var(--md-sys-color-background);
 }
 
-.app-container{
-    padding: 16px;
-}
-
+/* LIST CSS */
 .list-container {
     width: 100%;
     height: 100%;
@@ -35,7 +32,49 @@ tr, td, th {
 tr {
     text-align: left;
 }
+/* LIST CSS ENDREIGON */
 
+/* List HEADER CSS */
+.list-header-wrapper {
+    display: flex;
+    padding: 10px 0;
+}
 
+.list-title {
+    flex: 1;
+    color: var(--md-sys-color-on-background);
+}
 
+/* LIST HEADER CSS ENDREIGON*/
 
+/* DIALOG CSS */
+.dialog-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.dialog-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    
+    width: 30%;
+    height: 30%;
+    padding: 10px 16px;
+
+    background-color: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
+}
+
+.dialog-header {
+    display: flex;
+}
+
+.dialog-title {
+    flex: 1;
+}
+
+/* DIALOG CSS ENDREGION */

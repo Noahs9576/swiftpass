@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import List from './List.js';
+import Dialog from './Dialog.js';
 
 const App = {
     name: 'App',
@@ -7,14 +8,19 @@ const App = {
 
     template: `
         <div class='app-container'>
-            <list v-if='!isLoading' :serverData='serverData' />
+            <div class='dialog-container' v-if='dialogs.length > 0'>
+                <dialog-component v-for='dialog in dialogs' />
+            </div>
+
+            <list v-if='!isLoading' :serverData='serverData' @new-details-dialog='newDialog' />
         </div>
     `,
 
     data() {
         return {
             serverData: {},
-            isLoading: true
+            isLoading: true,
+            dialogs: []
         }
     },
 
@@ -36,12 +42,15 @@ const App = {
     },
 
     methods: {
-
+        newDialog(data) {
+            console.log("DLM: data: ", data);
+            this.dialogs.push(data ?? {});
+        }
     },
 };
 
 new Vue({
     el: '#app',
     template: '<App/>',
-    components: { App, List },
+    components: { App, List, Dialog },
 });

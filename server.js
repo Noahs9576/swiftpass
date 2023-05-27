@@ -59,6 +59,12 @@ app.get("/App.js", (req, res) => {
 app.get("/List.js", (req, res) => {
     res.sendFile(__dirname + "/src/components/List.js");
 });
+app.get("/ListHeader.js", (req, res) => {
+    res.sendFile(__dirname + "/src/components/ListHeader.js");
+});
+app.get("/Dialog.js", (req, res) => {
+    res.sendFile(__dirname + "/src/components/Dialog.js");
+})
 
 app.get("/src/css/:filename", function(req, res){
     console.log(req.params.filename)
